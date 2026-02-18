@@ -1,0 +1,14 @@
+<svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#8ab4f8" />
+      <stop offset="33%"  stop-color="#c58af9" />
+      <stop offset="66%"  stop-color="#f8a8c8" />
+      <stop offset="100%" stop-color="#fdd663" />
+    </linearGradient>
+  </defs>
+  <path
+    d="M18 3 C18 3 19.5 13 26 18 C19.5 23 18 33 18 33 C18 33 16.5 23 10 18 C16.5 13 18 3 18 3Z"
+    fill="url(#gemGrad)"
+  />
+</svg>

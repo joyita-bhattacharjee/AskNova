@@ -1,0 +1,308 @@
+/* ══════════════════════════════════════
+   WELCOME SCREEN
+══════════════════════════════════════ */
+.welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 52px 32px 32px;
+}
+
+/* Logo + title side by side */
+.welcome-heading {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+.welcome-star {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    animation: starHue 8s linear infinite;
+}
+
+.welcome-star svg {
+    width: 52px;
+    height: 52px;
+}
+
+@keyframes starHue {
+    0%   { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.welcome-title {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.welcome-grad {
+    background: linear-gradient(
+        90deg,
+        var(--gem-1) 0%,
+        var(--gem-2) 30%,
+        var(--gem-3) 60%,
+        var(--gem-4) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradShift 4s linear infinite alternate;
+}
+
+@keyframes gradShift {
+    0%   { background-position: 0% center; }
+    100% { background-position: 100% center; }
+}
+
+.welcome-plain {
+    color: var(--text-2);
+}
+
+.welcome-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    line-height: 1.6;
+}
+
+/* ══════════════════════════════════════
+   CHAT MESSAGES CONTAINER
+══════════════════════════════════════ */
+.chats {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 16px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* ── User message row ── */
+.userDiv {
+    display: flex;
+    justify-content: flex-end;
+    animation: fadeUp 0.28s ease both;
+}
+
+.userMessage {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 20px 20px 4px 20px;
+    padding: 12px 18px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 72%;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+/* ── AI message row ── */
+.gptDiv {
+    display: flex;
+    justify-content: flex-start;
+    animation: fadeUp 0.28s ease both;
+    margin-bottom: 8px;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* AI message inner layout */
+.ai-message-wrap {
+    display: flex;
+    gap: 14px;
+    max-width: 85%;
+}
+
+.ai-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gem-1), var(--gem-2), var(--gem-3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: white;
+}
+
+/* Subtle pulse when actively typing */
+.typing-avatar {
+    animation: avatarPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(138,180,248,0.3); }
+    50%       { box-shadow: 0 0 0 6px rgba(138,180,248,0); }
+}
+
+.ai-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.ai-label-name {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    background: linear-gradient(90deg, var(--gem-1), var(--gem-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── ReactMarkdown output styling ── */
+.ai-content p {
+    font-size: 15px;
+    line-height: 1.78;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.ai-content p:last-child { margin-bottom: 0; }
+
+.ai-content h1, .ai-content h2, .ai-content h3 {
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 600;
+    color: var(--text);
+    margin: 18px 0 8px;
+    line-height: 1.3;
+}
+
+.ai-content h1 { font-size: 20px; }
+.ai-content h2 { font-size: 17px; }
+.ai-content h3 { font-size: 15px; }
+
+.ai-content ul, .ai-content ol {
+    padding-left: 22px;
+    margin-bottom: 12px;
+}
+
+.ai-content li {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.ai-content strong {
+    color: var(--gem-1);
+    font-weight: 600;
+}
+
+.ai-content em {
+    color: var(--text-2);
+    font-style: italic;
+}
+
+/* Inline code */
+.ai-content code:not(pre code) {
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 13.5px;
+    color: var(--gem-2);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Code blocks */
+.ai-content pre {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    margin: 14px 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+
+.ai-content pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+/* Blockquote */
+.ai-content blockquote {
+    border-left: 3px solid var(--gem-2);
+    padding: 4px 16px;
+    margin: 12px 0;
+    color: var(--text-2);
+    font-style: italic;
+}
+
+/* Table */
+.ai-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 14px;
+}
+
+.ai-content th, .ai-content td {
+    padding: 9px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.ai-content th {
+    color: var(--gem-1);
+    font-weight: 600;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Horizontal rule */
+.ai-content hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 18px 0;
+}
+
+/* ── Action buttons under AI bubble ── */
+.ai-actions {
+    display: flex;
+    gap: 2px;
+    margin-top: 10px;
+}
+
+.act-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.18s;
+    padding: 0;
+}
+
+.act-btn:hover {
+    background: var(--bg-2);
+    color: var(--text);
+}
